@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./include/head')%>
+</head>
+<body>
+    <h2 id="title" class="text-center" style="color: white; font-family: GyeonggiBatang; font-size: 18px; margin-top: 60px;">당신에게 어울리는 칵테일은</h2>
+    <div  id="rep" class="container text-center mb-5" style="margin-top: -50px;">
+        <img src="/images/<%= cocktail_img %>" style="width: 290px;">
+        <p class="text-center" style="color: #9199D6; font-family: GyeonggiBatang; font-size: 20px;" id="title"><%= title %></p>
+        <p class="text-center" style="color: white; font-family: GyeonggiBatang; font-size: 27px; margin-top: -19px;"><%= cocktail %></p>
+    </div>
+    <div class = "container mb-5" id="rep">
+        <ul style="color: white; font-family: GyeonggiBatang; font-size: 14px; padding-right: 20px; letter-spacing: 0.8px;">
+            <% content.forEach(function(e){ %>
+                <li><%= e %></li>
+            <% }) %>
+        </ul>
+    </div>
+
+      <div class = "container text-center" id="rep" style="margin-top: -45px;">
+      <div onclick="location.href='https://cocktail-mbti.com/<%= relationgood_url%>';" class = "container" id="main">
+        <div><img src="/images/<%= relationgood_img %>" style="width: 160px;"></div>
+      <div class="stick w0_5"></div>
+        
+        <div id="main_div"style="color: #9199D6; font-family: GyeonggiBatang; line-height:33px;">최고의 궁합 
+           <div style="color:white"> <%= relationgood %></div>
+        </div>
+      </div>
+      <div onclick="location.href='https://cocktail-mbti.com/<%= opposite_url%>';"  class = "container" id="main" style="margin-top: -40px;">
+        <div><img src="/images/<%= opposite_img %>" style="width: 160px;"></div>
+      <div class="stick w0_5"></div>
+        
+        <div id="main_div"style="color:  #d09adb; font-family: GyeonggiBatang; line-height:33px;">최악의 궁합 
+           <div style="color:white"> <%= opposite %></div>
+        </div>
+      </div>
+    </div>
+    <div class = "container text-center" id="rep" style="margin-top: -25px;">
+        <button type="button" class = "button mt-5" >결과 공유하기</button>
+        <button type="button" class = "button mt-3" onclick="location.href='/';">검사하러 가기</button>
+    </div>
+    <script src="/javascripts/shareUrl.js"></script>
+    <br/><br/>
+    <div class="container text-center">
+        <ins class="kakao_ad_area" style="display:none;" 
+            data-ad-unit    = "DAN-P5LNBkOuR09yDcXi" 
+            data-ad-width   = "320" 
+            data-ad-height  = "50">
+        </ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+</body>
+
+</html>

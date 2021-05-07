@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'GyeonggiBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@media (max-width: 600px) {
+  body {
+    background-size: 500%;
+  }
+}
+html{
+  height: 100%;
+}
+body {
+  height: 100%;
+  background-image: url('/images/background.png');
+  background-size: 150%;
+}
+.hover {
+  cursor: pointer
+}
+.hover:hover {
+  background-color: #EEE
+}
+.start_btn {
+  width: 80%;
+  height: 50px;
+  border: 3px solid #d09adb;
+  border-radius: 0;
+  background-color: #a52a2a00;
+  color: #ffffff;
+  box-shadow:  0px 0px 8px #d09adb inset, 0px 0px 8px #d09adb;
+  font-family:NEXON Lv1 Gothic OTF; 
+  letter-spacing: 2.5px;
+}
+.ansbutton {
+  width: 90%;
+  height: 100px;
+  border: 3px solid #d09adb;
+  border-radius: 0;
+  background-color: #a52a2a00;
+  color: #ffffff;
+  box-shadow:  0px 0px 8px #d09adb inset, 0px 0px 8px #d09adb;
+}
+#umm {
+  max-width: 360px;
+  height: 500px;
+  margin-top: 10px;
+}
+#undefined{
+  max-width: 360px;
+  height: 500px;
+}
+.question {
+  max-width: 360px;
+}
+.result {
+  display: none;
+}
+#hmm {
+  max-width: 360px;
+  margin-top: 20%;
+}
+.prog{
+  background-color: #ffffff;
+  height: 2px;
+  max-width: 60%;
+  margin: 0 auto;
+}
+.progs{
+  background-color: #d09adb;
+  height: 100%;
+}
+.button {
+  width:80%;
+  height: 50px;
+  border: 3px solid #d09adb;
+  border-radius: 0;
+  background-color: #a52a2a00;
+  color: #ffffff;
+  box-shadow:  0px 0px 3px #d09adb inset, 0px 0px 3px #d09adb;
+  font-family:NEXON Lv1 Gothic OTF; 
+  letter-spacing: 2.5px;
+  font-size: 15px;
+}
+#title{
+  margin-top: -50px;
+}
+#rep{
+  max-width: 360px;
+}
+#req2{
+  margin-top: 30px ;
+
+}
+li{
+  margin-bottom: 13px;
+}
+#main {
+  max-width: 360px;
+  display: flex;
+  align-items: center;
+}
+
+#main_div {
+   flex:10%;
+   margin-left: -40px;
+}
+.stick {
+  border-left: 1px solid white;
+  height: 43px;
+  margin-left: -34px;
+}
+
+.w0_5{
+  transform: scaleX(0.5);
+}
