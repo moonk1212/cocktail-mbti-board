@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const report_map = require('../report_map');
 const question_map = require('../question_map');
+const db = require('../db');
+const {check, validationResult} = require('express-validator');
 
 // root
 router.get('/', function (req, res, next) {
@@ -92,5 +94,53 @@ router.get('/report/:id', function (req, res, next) {
 router.get('/404', function (req, res, next) {
   res.render('404')
 })
+
+//memo 
+router.get('/memo', function(req, res, next) {
+  db.getAllMemos((rows) =>{ 
+    res.render('memo', { rows: rows }); 
+  }); 
+});
+
+router.get('/newMemo', function(req, res, next){ 
+  res.render('newMemo'); 
+});
+
+router.post('/store', [check('content').isByteLength({min:1, max:500})], function(req, res, next){ 
+  let errs = validationResult(req); 
+  if(errs['errors'].length > 0){
+     //화면에 에러 출력하기 위함
+      res.render('newMemo',{errs:errs['errors']}); 
+    }else{ 
+      let param = JSON.parse(JSON.stringify(req.body)); 
+      db.insertMemo(param['content'],() =>{ 
+        res.redirect('/memo'); 
+      }); 
+    } 
+  });
+  router.post('/updateMemo', [check('content').isLength({min:1, max:500})], (req, res) =>{ 
+    let errs = validationResult(req); 
+    let param = JSON.parse(JSON.stringify(req.body)); 
+    let id = param['id']; 
+    let content = param['content']; 
+    if(errs['errors'].length > 0){ //화면에 에러 출력하기 위함 
+      db.getMemoById(id, (row)=>{ //유효성 검사에 적합하지 않으면 정보를 다시 조회 후, updateMemo 페이지를 다시 랜더링한다. 
+        res.render('updateMemo',{row:row[0], errs:errs['errors']}); 
+      }); 
+    }else{ 
+      db.updateMemoById(id, content, () =>{ 
+        res.redirect('/memo'); 
+      }); 
+    } 
+  });
+
+router.get('/deleteMemo', (req, res) =>{ 
+  let id = req.query.id; 
+  db.deleteMemoById(id, () =>{ 
+    res.redirect('/memo'); 
+  }); 
+});
+
+
 
 module.exports = router;
