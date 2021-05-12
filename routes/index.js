@@ -133,7 +133,16 @@ router.post('/store', [check('content').isByteLength({min:1, max:500})], functio
       }); 
     } 
   });
-
+router.get('/updateMemo', (req, res) =>{ 
+  let id = req.query.id; 
+  db.getMemoById(id, (row)=>{ 
+    if(typeof id === 'undefinde' || row.length <= 0){ 
+      res.status(404).json({error:'undefinde memo'}); 
+    }else{ 
+      res.render('updateMemo',{row:row[0]}); 
+    } 
+  }); 
+});
 router.get('/deleteMemo', (req, res) =>{ 
   let id = req.query.id; 
   db.deleteMemoById(id, () =>{ 
@@ -141,6 +150,6 @@ router.get('/deleteMemo', (req, res) =>{
   }); 
 });
 
-
+//출처:https://dev-overload.tistory.com/8
 
 module.exports = router;
